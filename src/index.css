@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  
+  --color-brand-cyan: #00F0FF;
+  --color-brand-magenta: #FF00AA;
+  --color-brand-purple: #9D4EDD;
+  --color-brand-lime: #CCFF00;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-spin-slow: spin 12s linear infinite;
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+@layer base {
+  body {
+    @apply transition-colors duration-500 font-sans;
+  }
+  
+  h1, h2, h3, h4, .font-display {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .glass {
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-dark {
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .neo-button {
+    position: relative;
+    overflow: hidden;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .neo-button:active {
+    transform: scale(0.95);
+  }
+
+  .neo-button-primary {
+    background: var(--color-brand-cyan);
+    color: black;
+  }
+  
+  .neo-button-primary:hover {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+    transform: scale(1.05);
+  }
+
+  .neo-button-outline {
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    color: var(--color-brand-cyan);
+  }
+  
+  .neo-button-outline:hover {
+    background: rgba(0, 240, 255, 0.1);
+  }
+}
+
+/* Custom scrollbar for that premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-cyan/20 rounded-full hover:bg-brand-cyan/40 transition-colors;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
